@@ -1,9 +1,3 @@
-/*
-	forma de invocación de método call:
-	def ejecucion = load 'script.groovy'
-	ejecucion.call()
-*/
-
 def call(){
 
 pipeline {
@@ -21,15 +15,15 @@ pipeline {
         stage('Pipeline') {
             steps {
                 script {
-
-                    println "Pipeline"
+                    STAGE = env.STAGE_NAME
+                    println "Stage: ${env.STAGE_NAME}"
                     
                     if (params.buildTool ==  "gradle") {
-                        def ejecucion = load 'gradle.groovy'
-	                    ejecucion.call()
+                        def gradle = load 'gradle.groovy'
+	                    gradle.call()
                     } else {
-                        def ejecucion = load 'maven.groovy'
-	                    ejecucion.call()
+                        def maven = load 'maven.groovy'
+	                    maven.call()
                     }
                 }
             }
@@ -37,16 +31,16 @@ pipeline {
     }
 
     post{
-            success{
-                slackSend color: 'good', message: "Build Success: [${env.USER}] [${env.JOB_NAME}] [${params.buildTool}] Ejecucion exitosa !! (Revisar en el siguiente link: ${env.BUILD_URL})"
+        success{
+            slackSend color: 'good', message: "Build Success: [${env.USER}] [${env.JOB_NAME}] [${params.buildTool}] Ejecucion exitosa !! (Revisar en el siguiente link: ${env.BUILD_URL})"
 
 
-            }
-            failure{
-                slackSend color: 'danger', message: "Build Failure: [${env.USER}] [${env.JOB_NAME}] [${params.buildTool}][Ejecucion fallida en stage ${STAGE}  (Revisar en el siguiente link: ${env.BUILD_URL})"
-				error "Ejecucion fallida en stage ${STAGE}"
-            }
-        }	
+        }
+        failure{
+            slackSend color: 'danger', message: "Build Failure: [${env.USER}] [${env.JOB_NAME}] [${params.buildTool}][Ejecucion fallida en stage ${STAGE}  (Revisar en el siguiente link: ${env.BUILD_URL})"
+			error "Ejecucion fallida en stage ${STAGE}"
+        }
+    }	
 }
 
 }
