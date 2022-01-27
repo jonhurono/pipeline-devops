@@ -4,8 +4,6 @@
 	ejecucion.call()
 */
 
-def call(){
-
 pipeline {
     agent any
     
@@ -49,6 +47,3 @@ pipeline {
         }	
 }
 
-}
-
-return this;
