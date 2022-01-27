@@ -3,7 +3,8 @@
 	def ejecucion = load 'script.groovy'
 	ejecucion.call()
 */
-
+def call(){
+	
 pipeline {
     agent any
     
@@ -44,6 +45,9 @@ pipeline {
                 slackSend color: 'danger', message: "Build Failure: [${env.USER}] [${env.JOB_NAME}] [${params.buildTool}][Ejecucion fallida en stage ${STAGE}  (Revisar en el siguiente link: ${env.BUILD_URL})"
 				error "Ejecucion fallida en stage ${STAGE}"
             }
-        }	
+        }
 }
+	}
+
+return this;
 
