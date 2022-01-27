@@ -10,7 +10,6 @@ def call(){
         STAGE = env.STAGE_NAME
         sh 'env'
         println "Stage: ${env.STAGE_NAME}"
-        sh './gradlew clean build'
     }
 
     stage('Sonar') {
