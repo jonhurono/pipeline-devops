@@ -24,8 +24,8 @@ pipeline {
 	                    irgradle.call()
                     } else {
                         def irmaven = load 'maven.groovy'
-	                    irmaven.call()*/
-                    }
+	                    irmaven.call()
+                    }*/
                 }
             }
         }		
