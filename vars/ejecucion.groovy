@@ -1,11 +1,4 @@
-<<<<<<< HEAD
-=======
-/*
-	forma de invocación de método call:
-	def ejecucion = load 'script.groovy'
-	ejecucion.call()
-*/
->>>>>>> 672d685cf0300ae5845b8e16d3bd3f219d7b05ab
+
 def call(){
 	
 pipeline {
@@ -43,7 +36,7 @@ pipeline {
             slackSend color: 'good', message: "Build Success: [${env.USER}] [${env.JOB_NAME}] [${params.buildTool}] Ejecucion exitosa !! (Revisar en el siguiente link: ${env.BUILD_URL})"
 
 
-<<<<<<< HEAD
+
         }
         failure{
             slackSend color: 'danger', message: "Build Failure: [${env.USER}] [${env.JOB_NAME}] [${params.buildTool}][Ejecucion fallida en stage ${STAGE}  (Revisar en el siguiente link: ${env.BUILD_URL})"
@@ -52,16 +45,7 @@ pipeline {
     }	
 }
 
-=======
-            }
-            failure{
-                slackSend color: 'danger', message: "Build Failure: [${env.USER}] [${env.JOB_NAME}] [${params.buildTool}][Ejecucion fallida en stage ${STAGE}  (Revisar en el siguiente link: ${env.BUILD_URL})"
-				error "Ejecucion fallida en stage ${STAGE}"
-            }
-        }
->>>>>>> 672d685cf0300ae5845b8e16d3bd3f219d7b05ab
 }
-	}
 
 return this;
 
