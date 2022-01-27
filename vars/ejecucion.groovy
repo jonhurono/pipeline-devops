@@ -20,11 +20,10 @@ pipeline {
                     println "Stage: ${env.STAGE_NAME}"
                     
                     if (params.buildTool ==  "gradle") {
-                        def irgradle = load 'gradle.groovy'
-	                    irgradle.call()
+                        gradle()
                     } else {
                         def irmaven = load 'maven.groovy'
-	                    irmaven.call()
+	                maven()
                     }
                 }
             }
