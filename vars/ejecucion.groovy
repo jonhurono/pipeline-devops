@@ -18,12 +18,11 @@ pipeline {
                 script {
                     STAGE = env.STAGE_NAME
                     println "Stage: ${env.STAGE_NAME}"
-                    
+		
                     if (params.buildTool ==  "gradle") {
-                        gradle()
+                        gradle(verifyBranchName())
                     } else {
-                        def irmaven = load 'maven.groovy'
-	                maven()
+	                maven(verifyBranchName())
                     }
                 }
             }
@@ -44,6 +43,16 @@ pipeline {
     }	
 }
 
+}
+
+def verifyBranchName(){
+	//def is_ci_or_cd = ( env.GIT_BRANCH.contains('feature-') ) ? 'CI' : 'CD'
+	
+	if (env.GIT_BRANCH.contains('feature-') || env.GIT_BRANCH.contains('develop')){
+		return 'CI'	
+	} else {
+		return 'CD'
+	}
 }
 
 return this;
