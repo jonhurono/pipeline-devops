@@ -4,7 +4,7 @@
 	ejecucion.call()
 */
 
-def call(){
+def call(String pipelineType){
   
     stage('Compile') {
         STAGE = env.STAGE_NAME
