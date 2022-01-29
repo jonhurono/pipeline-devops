@@ -5,6 +5,8 @@
 */
 
 def call(String pipelineType){
+	
+	figlet pipelineType
   
     stage('Build & Unit Test') {
         STAGE = env.STAGE_NAME
