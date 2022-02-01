@@ -16,6 +16,7 @@ pipeline {
         stage('Pipeline') {
             steps {
                 script {
+<<<<<<< HEAD
                     env.STAGE_NAME = null
                     env.PSTAGE = null
 
@@ -47,6 +48,16 @@ pipeline {
                                 break;
                             }
                         }
+=======
+                    STAGE = env.STAGE_NAME
+                    println "Stage: ${env.STAGE_NAME}"
+                    
+                    if (params.buildTool ==  "gradle") {
+                        gradle()
+                    } else {
+                        def irmaven = load 'maven.groovy'
+	                maven()
+>>>>>>> a8ab0cdb844b52265fc528ac39aee07717ede91a
                     }
                 }
             }
