@@ -9,7 +9,7 @@ pipeline {
 	}
 
     parameters{
-            choice choices: ['gradle', 'maven'], description: 'Indicar la herramienta de construccion', name: 'buildTool', string(name: 'stage', defaultValue: 'Build; Test; Run')
+            choice choices: ['gradle', 'maven'], description: 'Indicar la herramienta de construccion', name: 'buildTool', string(name: 'stage', defaultValue: '')
     }
 
     stages {
