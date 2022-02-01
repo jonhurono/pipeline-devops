@@ -16,7 +16,6 @@ pipeline {
         stage('Pipeline') {
             steps {
                 script {
-<<<<<<< HEAD
                     env.STAGE_NAME = null
                     env.PSTAGE = null
 
